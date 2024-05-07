@@ -1,15 +1,18 @@
 import tkinter
 from tkinter import Tk, StringVar, ttk, messagebox
 import random
+from tkinter import *
+
 
 
 root = tkinter.Tk()
-root.title("FOOD RESTAURANT SYSTEM")
-root.configure(background="purple")
+root.title("KCC ICE CREAM")
+root.configure(background="light blue")
+root.geometry("2500x800")
 
 Tops = tkinter.Frame(root, width=1200, height=100, bd=12, relief="raise")
 Tops.pack(side=tkinter.TOP)
-lblTitle = tkinter.Label(Tops, font=('arial', 30, 'bold'), text="      CREAM STONE      ")
+lblTitle = tkinter.Label(Tops, font=('arial', 30, 'bold'), text="      KCC MENU      ")
 lblTitle.grid(row=0, column=0)
 
 Bottommainframe = tkinter.Frame(root, width=1200, height=540, bd=12, relief="raise")
@@ -27,6 +30,17 @@ f2top.pack(side=tkinter.TOP)
 f2bottom = tkinter.Frame(f2, width=400, height=140, bd=12, relief="raise")
 f2bottom.pack(side=tkinter.BOTTOM)
 
+canvas = Canvas(root, width = 600, height = 600)
+canvas.pack()
+img = PhotoImage(file="B:\coding projects\Delicious-ice-cream-cone-clip-art-PNG.ppm")
+canvas.create_image(20,20, anchor=NW, image=img)
+canvas.place(x=0, y=0)
+
+canvas1 = Canvas(root, width = 400, height = 400)
+canvas1.pack()
+img1 = PhotoImage(file="B:\coding projects\pngtree-hand-drawn-ice-cream-sundae-vector-illustration-png-image_2695373 (1) [MConverter.eu].ppm")
+canvas1.create_image(20,20, anchor=NW, image=img1)
+canvas1.place(x=1900, y=0)
 
 var1 = tkinter.IntVar()
 var2 = tkinter.IntVar()
@@ -91,6 +105,9 @@ varcaramel = StringVar()
 varchoco = StringVar()
 varbrownie = StringVar()
 varfrench = StringVar()
+varfrench1 = StringVar()
+varfrench2 = StringVar()
+varfrench3 = StringVar()
 varnutella = StringVar()
 varstrawberry = StringVar()
 varcafe = StringVar()
@@ -123,6 +140,9 @@ varcaramel.set("0")
 varchoco.set("0")
 varbrownie.set("0")
 varfrench.set("0")
+varfrench1.set("0")
+varfrench2.set("0")
+varfrench3.set("0")
 varnutella.set("0")
 varstrawberry.set("0")
 varcafe.set("0")
@@ -140,7 +160,7 @@ varpayment.set("0")
 
 
 def exit_button():
-    button = messagebox.askyesno("Cream Stone", "Do you want to exit?")
+    button = messagebox.askyesno("KCC STORE", "Do you want to exit?")
     if button > 0:
         root.destroy()
         return
@@ -160,6 +180,9 @@ def reset():
     varchoco.set("0")
     varbrownie.set("0")
     varfrench.set("0")
+    varfrench1.set("0")
+    varfrench2.set("0")
+    varfrench3.set("0")
     varnutella.set("0")
     varstrawberry.set("0")
     varcafe.set("0")
@@ -173,158 +196,36 @@ def reset():
     varsubtotal.set("0")
     vartotal.set("0")
     varpayment.set("0")
-    txtferrero.configure(state=tkinter.DISABLED)
+    #txtferrero.configure(state=tkinter.DISABLED)
     txtbelgium.configure(state=tkinter.DISABLED)
-    txtblackforest.configure(state=tkinter.DISABLED)
+    #txtblackforest.configure(state=tkinter.DISABLED)
     txtbrownie.configure(state=tkinter.DISABLED)
-    txtcafe.configure(state=tkinter.DISABLED)
+    #txtcafe.configure(state=tkinter.DISABLED)
     txtcaramel.configure(state=tkinter.DISABLED)
     txtchange.configure(state=tkinter.DISABLED)
     txtchoco.configure(state=tkinter.DISABLED)
-    txtcream.configure(state=tkinter.DISABLED)
-    txtcreamy.configure(state=tkinter.DISABLED)
-    txtdeath.configure(state=tkinter.DISABLED)
+    #txtcream.configure(state=tkinter.DISABLED)
+    #txtcreamy.configure(state=tkinter.DISABLED)
+    #txtdeath.configure(state=tkinter.DISABLED)
     txtfrench.configure(state=tkinter.DISABLED)
-    txtfruit.configure(state=tkinter.DISABLED)
-    txthot.configure(state=tkinter.DISABLED)
-    txtlitchee.configure(state=tkinter.DISABLED)
-    txtnut.configure(state=tkinter.DISABLED)
-    txtnutella.configure(state=tkinter.DISABLED)
-    txtnutty.configure(state=tkinter.DISABLED)
-    txtoreo.configure(state=tkinter.DISABLED)
+    txtfrench1.configure(state=tkinter.DISABLED)
+    txtfrench2.configure(state=tkinter.DISABLED)
+    txtfrench3.configure(state=tkinter.DISABLED)
+    #txtfruit.configure(state=tkinter.DISABLED)
+    #txthot.configure(state=tkinter.DISABLED)
+    #txtlitchee.configure(state=tkinter.DISABLED)
+    #txtnut.configure(state=tkinter.DISABLED)
+    #txtnutella.configure(state=tkinter.DISABLED)
+    #txtnutty.configure(state=tkinter.DISABLED)
+    #txtoreo.configure(state=tkinter.DISABLED)
     #txtpayment.configure(state=tkinter.DISABLED)
-    txtredvelvet.configure(state=tkinter.DISABLED)
-    txtstraw.configure(state=tkinter.DISABLED)
-    txtstrawberry.configure(state=tkinter.DISABLED)
+    #txtredvelvet.configure(state=tkinter.DISABLED)
+    #txtstraw.configure(state=tkinter.DISABLED)
+    #txtstrawberry.configure(state=tkinter.DISABLED)
     txtsubtotal.configure(state=tkinter.DISABLED)
     txttax.configure(state=tkinter.DISABLED)
     txttotal.configure(state=tkinter.DISABLED)
 
-
-def chkredvelvet():
-    if var1.get() == 1:
-        txtredvelvet.configure(state=tkinter.NORMAL)
-        varredvelvet.set("")
-    elif var1.get() == 0:
-        txtredvelvet.configure(state=tkinter.DISABLED)
-        varredvelvet.set("0")
-
-
-def chkstrawberry():
-    if var15.get() == 1:
-        txtstrawberry.configure(state=tkinter.NORMAL)
-        varstrawberry.set("")
-    elif var15.get() == 0:
-        txtstrawberry.configure(state=tkinter.DISABLED)
-        varstrawberry.set("0")
-
-
-def chkfruit():
-    if var17.get() == 1:
-        txtfruit.configure(state=tkinter.NORMAL)
-        varfruit.set("")
-    elif var17.get() == 0:
-        txtfruit.configure(state=tkinter.DISABLED)
-        varfruit.set("0")
-
-
-def chkhot():
-    if var19.get() == 1:
-        txthot.configure(state=tkinter.NORMAL)
-        varhot.set("")
-    elif var19.get() == 0:
-        txthot.configure(state=tkinter.DISABLED)
-        varhot.set("0")
-
-
-def chkcreamy():
-    if var19.get() == 1:
-        txtcreamy.configure(state=tkinter.NORMAL)
-        varcreamy.set("")
-    elif var19.get() == 0:
-        txtcreamy.configure(state=tkinter.DISABLED)
-        varcreamy.set("0")
-
-
-def chkdeath():
-    if var20.get() == 1:
-        txtdeath.configure(state=tkinter.NORMAL)
-        vardeath.set("")
-    elif var20.get() == 0:
-        txtdeath.configure(state=tkinter.DISABLED)
-        vardeath.set("0")
-
-
-def chknut():
-    if var21.get() == 1:
-        txtnut.configure(state=tkinter.NORMAL)
-        varnut.set("")
-    elif var21.get() == 0:
-        txtnut.configure(state=tkinter.DISABLED)
-        varnut.set("0")
-
-
-def chkoreo():
-    if var2.get() == 1:
-        txtoreo.configure(state=tkinter.NORMAL)
-        varoreo.set("")
-    elif var2.get() == 0:
-        txtoreo.configure(state=tkinter.DISABLED)
-        varoreo.set("0")
-
-
-def chkblackforest():
-    if var3.get() == 1:
-        txtblackforest.configure(state=tkinter.NORMAL)
-        varblackforest.set("")
-    elif var3.get() == 0:
-        txtblackforest.configure(state=tkinter.DISABLED)
-        varblackforest.set("0")
-
-
-def chkferrero():
-    if var4.get() == 1:
-        txtferrero.configure(state=tkinter.NORMAL)
-        varferrero.set("")
-    elif var4.get() == 0:
-        txtferrero.configure(state=tkinter.DISABLED)
-        varferrero.set("0")
-
-
-def chknutty():
-    if var5.get() == 1:
-        txtnutty.configure(state=tkinter.NORMAL)
-        varnutty.set("")
-    elif var5.get() == 0:
-        txtnutty.configure(state=tkinter.DISABLED)
-        varnutty.set("0")
-
-
-def chkcream():
-    if var6.get() == 1:
-        txtcream.configure(state=tkinter.NORMAL)
-        varcream.set("")
-    elif var6.get() == 0:
-        txtcream.configure(state=tkinter.DISABLED)
-        varcream.set("0")
-
-
-def chkstraw():
-    if var7.get() == 1:
-        txtstraw.configure(state=tkinter.NORMAL)
-        varstraw.set("")
-    elif var7.get() == 0:
-        txtstraw.configure(state=tkinter.DISABLED)
-        varstraw.set("0")
-
-
-def chklitchee():
-    if var8.get() == 1:
-        txtlitchee.configure(state=tkinter.NORMAL)
-        varlitchee.set("")
-    elif var8.get() == 0:
-        txtlitchee.configure(state=tkinter.DISABLED)
-        varlitchee.set("0")
 
 
 def chkbelgium():
@@ -371,23 +272,30 @@ def chkfrench():
         txtfrench.configure(state=tkinter.DISABLED)
         varfrench.set("0")
 
+def chkfrench1():
+    if var13.get() == 1:
+        txtfrench1.configure(state=tkinter.NORMAL)
+        varfrench1.set("")
+    elif var13.get() == 0:
+        txtfrench1.configure(state=tkinter.DISABLED)
+        varfrench1.set("0")
 
-def chknutella():
-    if var14.get() == 1:
-        txtnutella.configure(state=tkinter.NORMAL)
-        varnutella.set("")
-    elif var14.get() == 0:
-        txtnutella.configure(state=tkinter.DISABLED)
-        varnutella.set("0")
+def chkfrench2():
+    if var13.get() == 1:
+        txtfrench2.configure(state=tkinter.NORMAL)
+        varfrench2.set("")
+    elif var13.get() == 0:
+        txtfrench2.configure(state=tkinter.DISABLED)
+        varfrench2.set("0")
 
+def chkfrench3():
+    if var13.get() == 1:
+        txtfrench3.configure(state=tkinter.NORMAL)
+        varfrench3.set("")
+    elif var13.get() == 0:
+        txtfrench3.configure(state=tkinter.DISABLED)
+        varfrench3.set("0")
 
-def chkcafe():
-    if var16.get() == 1:
-        txtcafe.configure(state=tkinter.NORMAL)
-        varcafe.set("")
-    elif var16.get() == 0:
-        txtcafe.configure(state=tkinter.DISABLED)
-        varcafe.set("0")
 
 def costofmeal():
     m1 = float(varstraw.get())
@@ -401,7 +309,7 @@ def costofmeal():
     m9 = float(varcreamy.get())
     m10 = float(vardeath.get())
     m11 = float(varferrero.get())
-    m12 = float(varfrench.get())
+    m12 = float(varfrench.get() + varfrench1.get() + varfrench2.get() + varfrench3.get())
     m13 = float(varfruit.get())
     m14 = float(varhot.get())
     m15 = float(varlitchee.get())
@@ -465,86 +373,57 @@ Ereceipt.place(x=180, y=32)
 Receipt_no.set(random.randint(0, 1000))
 
 
-lblIcecake = tkinter.Label(f1, font=('comic sans MS', 18, 'bold'), text="ICECREAM CAKES")
+lblIcecake = tkinter.Label(f1, font=('comic sans MS', 18, 'bold'), text="Dine In or Carry Out")
 lblIcecake.grid(row=3, column=0, padx=2, pady=2, sticky='w')
 
+btnDinein = tkinter.Button(f1,padx=16,pady=1,bd=4,fg='black',font=('arial',16,'bold'),width=5,text='Dine In').grid(row=5,column=0)
 
-redvelvet = tkinter.Checkbutton(f1, text="Red Velvet Cake\t\t650", variable=var1, onvalue=1, offvalue=0,
-                                font=('Microsoft New Tai Lue', 12), command=chkredvelvet).grid(row=4, column=0)
-txtredvelvet = tkinter.Entry(f1, font=('arial', 12), textvariable=varredvelvet, width=6, justify='left',
-                             state=tkinter.DISABLED)
-txtredvelvet.grid(row=4, column=1)
-
-oreo = tkinter.Checkbutton(f1, text="Oreo  Cake\t\t550", variable=var2, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkoreo).grid(row=5, column=0)
-txtoreo = tkinter.Entry(f1, font=('arial', 12), textvariable=varoreo, width=6, justify='left', state=tkinter.DISABLED)
-txtoreo.grid(row=5, column=1)
-
-blackforest = tkinter.Checkbutton(f1, text="Black Forest Cake\t\t550", variable=var3, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkblackforest).grid(row=6, column=0)
-txtblackforest = tkinter.Entry(f1, font=('arial', 12), textvariable=varblackforest, width=6, justify='left',
-                               state=tkinter.DISABLED)
-txtblackforest.grid(row=6, column=1)
-
-ferrero = tkinter.Checkbutton(f1, text="Ferrero Rocher Cake\t\t799", variable=var4, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkferrero).grid(row=7, column=0)
-txtferrero = tkinter.Entry(f1, font=('arial', 12), textvariable=varferrero, width=6, justify='left',
-                           state=tkinter.DISABLED)
-txtferrero.grid(row=7, column=1)
-
-nutty = tkinter.Checkbutton(f1, text="Nutty Almond Cake\t\t699", variable=var5, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chknutty).grid(row=8, column=0)
-txtnutty = tkinter.Entry(f1, font=('arial', 12), textvariable=varnutty, width=6, justify='left', state=tkinter.DISABLED)
-txtnutty.grid(row=8, column=1)
-
-lblIcecake = tkinter.Label(f1, font=('comic sans MS', 18, 'bold'), text="BLISS IN THE BOTTLE")
-lblIcecake.grid(row=10, column=0)
-
-cream = tkinter.Checkbutton(f1, text="Creamy Vanilla\t\t119", variable=var6, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkcream).grid(row=11, column=0)
-txtcream = tkinter.Entry(f1, font=('arial', 12), textvariable=varcream, width=6, justify='left', state=tkinter.DISABLED)
-txtcream.grid(row=11, column=1)
-
-straw = tkinter.Checkbutton(f1, text="Strawberry\t\t139", variable=var7, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkstraw).grid(row=12, column=0)
-txtstraw = tkinter.Entry(f1, font=('arial', 12), textvariable=varstraw, width=6, justify='left', state=tkinter.DISABLED)
-txtstraw.grid(row=12, column=1)
-
-litchee = tkinter.Checkbutton(f1, text="Litchee\t\t\t139", variable=var8, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chklitchee).grid(row=13, column=0)
-txtlitchee = tkinter.Entry(f1, font=('arial', 12), textvariable=varlitchee, width=6, justify='left',
-                           state=tkinter.DISABLED)
-txtlitchee.grid(row=13, column=1)
+btnCarryout = tkinter.Button(f1,padx=16,pady=1,bd=4,fg='black',font=('arial',16,'bold'),width=5,text='Carry Out').grid(row=6,column=0)
 
 ###################################################### Frame2  ##################################################################################
 
-lblIcecake = tkinter.Label(f2top, font=('comic sans MS', 18, 'bold'), text="SIMPLY DELICIOUS SCOOPS")
+lblIcecake = tkinter.Label(f2top, font=('comic sans MS', 18, 'bold'), text="SIMPLY DELICIOUS TOPPINGS")
 lblIcecake.grid(row=0, column=0)
 
-belgium = tkinter.Checkbutton(f2top, text="Belgium Dark Chocolate\t\t79", variable=var9, onvalue=1, offvalue=0,
+belgium = tkinter.Checkbutton(f2top, text="Nuts\t\t79", variable=var9, onvalue=1, offvalue=0,
                             font=('Microsoft New Tai Lue', 12), command=chkbelgium).grid(row=1, column=0)
 txtbelgium = tkinter.Entry(f2top, font=('arial', 12), textvariable=varbelgium, width=6, justify='left', state=tkinter.DISABLED)
 txtbelgium.grid(row=1, column=1)
 
-caramel = tkinter.Checkbutton(f2top, text="Caramel Nuts\t\t\t70", variable=var10, onvalue=1, offvalue=0,
+caramel = tkinter.Checkbutton(f2top, text="Chocolate\t\t\t70", variable=var10, onvalue=1, offvalue=0,
                             font=('Microsoft New Tai Lue', 12), command=chkcaramel).grid(row=2, column=0)
 txtcaramel = tkinter.Entry(f2top, font=('arial', 12), textvariable=varcaramel, width=6, justify='left', state=tkinter.DISABLED)
 txtcaramel.grid(row=2, column=1)
 
-choco = tkinter.Checkbutton(f2top, text="Choco Fudge\t\t\t70", variable=var11, onvalue=1, offvalue=0,
+choco = tkinter.Checkbutton(f2top, text="Strawb and pine syrup\t\t\t70", variable=var11, onvalue=1, offvalue=0,
                             font=('Microsoft New Tai Lue', 12), command=chkchoco).grid(row=3, column=0)
 txtchoco = tkinter.Entry(f2top, font=('arial', 12), textvariable=varchoco, width=6, justify='left', state=tkinter.DISABLED)
 txtchoco.grid(row=3, column=1)
 
-brownie = tkinter.Checkbutton(f2top, text="Brownie Delight\t\t\t75", variable=var12, onvalue=1, offvalue=0,
+brownie = tkinter.Checkbutton(f2top, text="Whipped creaam\t\t\t75", variable=var12, onvalue=1, offvalue=0,
                             font=('Microsoft New Tai Lue', 12), command=chkbrownie).grid(row=4, column=0)
 txtbrownie = tkinter.Entry(f2top, font=('arial', 12), textvariable=varbrownie, width=6, justify='left', state=tkinter.DISABLED)
 txtbrownie.grid(row=4, column=1)
 
-french = tkinter.Checkbutton(f2top, text="French Vanilla\t\t\t60", variable=var13, onvalue=1, offvalue=0,
+french = tkinter.Checkbutton(f2top, text="Sprinkles\t\t\t60", variable=var13, onvalue=1, offvalue=0,
                             font=('Microsoft New Tai Lue', 12), command=chkfrench).grid(row=5, column=0)
 txtfrench = tkinter.Entry(f2top, font=('arial', 12), textvariable=varfrench, width=6, justify='left', state=tkinter.DISABLED)
 txtfrench.grid(row=5, column=1)
+
+french1 = tkinter.Checkbutton(f2top, text="Sugar cookies\t\t\t60", variable=var13, onvalue=1, offvalue=0,
+                            font=('Microsoft New Tai Lue', 12), command=chkfrench).grid(row=6, column=0)
+txtfrench1 = tkinter.Entry(f2top, font=('arial', 12), textvariable=varfrench1, width=6, justify='left', state=tkinter.DISABLED)
+txtfrench1.grid(row=6, column=1)
+
+french2 = tkinter.Checkbutton(f2top, text="Bananas\t\t\t60", variable=var13, onvalue=1, offvalue=0,
+                            font=('Microsoft New Tai Lue', 12), command=chkfrench).grid(row=7, column=0)
+txtfrench2 = tkinter.Entry(f2top, font=('arial', 12), textvariable=varfrench2, width=6, justify='left', state=tkinter.DISABLED)
+txtfrench2.grid(row=7, column=1)
+
+french3 = tkinter.Checkbutton(f2top, text="A cherry\t\t\t60", variable=var13, onvalue=1, offvalue=0,
+                            font=('Microsoft New Tai Lue', 12), command=chkfrench).grid(row=8, column=0)
+txtfrench3 = tkinter.Entry(f2top, font=('arial', 12), textvariable=varfrench3, width=6, justify='left', state=tkinter.DISABLED)
+txtfrench3.grid(row=8, column=1)
 #################################################3    Frame 2 bottom  ###########################################################################
 
 lblPayment = tkinter.Label(f2bottom, font=('arial', 14, 'bold'), text="PAYMENT METHOD", bd=10, width=16, anchor='w')
@@ -583,52 +462,15 @@ txttotal.grid(row=3, column=2)
 
 ########################################################   Frame 3     ##########################################################################
 
-lblIcecake = tkinter.Label(f3, font=('comic sans MS', 18, 'bold'), text="THICK SHAKES")
+lblIcecake = tkinter.Label(f3, font=('comic sans MS', 18, 'bold'), text="Soops")
 lblIcecake.grid(row=0, column=0)
 
-nutella = tkinter.Checkbutton(f3, text="Nutella Brownie Blast\t199", variable=var14, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chknutella).grid(row=1, column=0)
-txtnutella = tkinter.Entry(f3, font=('arial', 12), textvariable=varnutella, width=6, justify='left', state=tkinter.DISABLED)
-txtnutella.grid(row=1, column=1)
+btnonescoop = tkinter.Button(f3,padx=16,pady=1,bd=4,fg='black',font=('arial',16,'bold'),width=5,text='1 scoop').grid(row=1,column=0)
 
-strawberry = tkinter.Checkbutton(f3, text="Strawberry Shake\t\t179", variable=var15, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkstrawberry).grid(row=2, column=0)
-txtstrawberry = tkinter.Entry(f3, font=('arial', 12), textvariable=varstrawberry, width=6, justify='left', state=tkinter.DISABLED)
-txtstrawberry.grid(row=2, column=1)
+btntwoscoop = tkinter.Button(f3,padx=16,pady=1,bd=4,fg='black',font=('arial',16,'bold'),width=5,text='2 scoops').grid(row=2,column=0)
 
-cafe = tkinter.Checkbutton(f3, text="Cafe Frappe\t\t199", variable=var16, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkcafe).grid(row=3, column=0)
-txtcafe = tkinter.Entry(f3, font=('arial', 12), textvariable=varcafe, width=6, justify='left', state=tkinter.DISABLED)
-txtcafe.grid(row=3, column=1)
+btnthreescoop = tkinter.Button(f3,padx=16,pady=1,bd=4,fg='black',font=('arial',16,'bold'),width=5,text='3 scoops').grid(row=3,column=0)
 
-fruit = tkinter.Checkbutton(f3, text="Fruit Bash\t\t\t179", variable=var17, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkfruit).grid(row=4, column=0)
-txtfruit = tkinter.Entry(f3, font=('arial', 12), textvariable=varfruit, width=6, justify='left', state=tkinter.DISABLED)
-txtfruit.grid(row=4, column=1)
-
-creamy = tkinter.Checkbutton(f3, text="Creamy Oreo\t\t179", variable=var18, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkcreamy).grid(row=5, column=0)
-txtcreamy = tkinter.Entry(f3, font=('arial', 12), textvariable=varcreamy, width=6, justify='left', state=tkinter.DISABLED)
-txtcreamy.grid(row=5, column=1)
-
-
-lblIcecake = tkinter.Label(f3, font=('comic sans MS', 18, 'bold'), text="SUNDAES TO SAVOUR")
-lblIcecake.grid(row=7, column=0)
-
-hot = tkinter.Checkbutton(f3, text="Hot Choco Fudge\t\t150", variable=var19, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkhot).grid(row=9, column=0)
-txthot = tkinter.Entry(f3, font=('arial', 12), textvariable=varhot, width=6, justify='left', state=tkinter.DISABLED)
-txthot.grid(row=9, column=1)
-
-death = tkinter.Checkbutton(f3, text="Death By Chocolate\t\t175", variable=var20, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkdeath).grid(row=10, column=0)
-txtdeath = tkinter.Entry(f3, font=('arial', 12), textvariable=vardeath, width=6, justify='left', state=tkinter.DISABLED)
-txtdeath.grid(row=10, column=1)
-
-nut = tkinter.Checkbutton(f3, text="Nutty Death By Chocolate\t199", variable=var21, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chknut).grid(row=11, column=0)
-txtnut = tkinter.Entry(f3, font=('arial', 12), textvariable=varnut, width=6, justify='left', state=tkinter.DISABLED)
-txtnut.grid(row=11, column=1)
 
 ############################################################ Button  ######################################################################
 btntotal = tkinter.Button(f2bottom, padx=16, pady=1, bd=4, fg='black', font=('arial',16,'bold'), width=5, text='Total', command = costofmeal)\
