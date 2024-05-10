@@ -55,6 +55,9 @@ var10 = tkinter.IntVar()
 var11 = tkinter.IntVar()
 var12 = tkinter.IntVar()
 var13 = tkinter.IntVar()
+var131 = tkinter.IntVar()
+var132 = tkinter.IntVar()
+var133 = tkinter.IntVar()
 var14 = tkinter.IntVar()
 var15 = tkinter.IntVar()
 var16 = tkinter.IntVar()
@@ -80,6 +83,9 @@ var10.set(0)
 var11.set(0)
 var12.set(0)
 var13.set(0)
+var131.set(0)
+var132.set(0)
+var133.set(0)
 var14.set(0)
 var15.set(0)
 var16.set(0)
@@ -196,32 +202,15 @@ def reset():
     varsubtotal.set("0")
     vartotal.set("0")
     varpayment.set("0")
-    #txtferrero.configure(state=tkinter.DISABLED)
     txtbelgium.configure(state=tkinter.DISABLED)
-    #txtblackforest.configure(state=tkinter.DISABLED)
     txtbrownie.configure(state=tkinter.DISABLED)
-    #txtcafe.configure(state=tkinter.DISABLED)
     txtcaramel.configure(state=tkinter.DISABLED)
     txtchange.configure(state=tkinter.DISABLED)
     txtchoco.configure(state=tkinter.DISABLED)
-    #txtcream.configure(state=tkinter.DISABLED)
-    #txtcreamy.configure(state=tkinter.DISABLED)
-    #txtdeath.configure(state=tkinter.DISABLED)
     txtfrench.configure(state=tkinter.DISABLED)
     txtfrench1.configure(state=tkinter.DISABLED)
     txtfrench2.configure(state=tkinter.DISABLED)
     txtfrench3.configure(state=tkinter.DISABLED)
-    #txtfruit.configure(state=tkinter.DISABLED)
-    #txthot.configure(state=tkinter.DISABLED)
-    #txtlitchee.configure(state=tkinter.DISABLED)
-    #txtnut.configure(state=tkinter.DISABLED)
-    #txtnutella.configure(state=tkinter.DISABLED)
-    #txtnutty.configure(state=tkinter.DISABLED)
-    #txtoreo.configure(state=tkinter.DISABLED)
-    #txtpayment.configure(state=tkinter.DISABLED)
-    #txtredvelvet.configure(state=tkinter.DISABLED)
-    #txtstraw.configure(state=tkinter.DISABLED)
-    #txtstrawberry.configure(state=tkinter.DISABLED)
     txtsubtotal.configure(state=tkinter.DISABLED)
     txttax.configure(state=tkinter.DISABLED)
     txttotal.configure(state=tkinter.DISABLED)
@@ -273,26 +262,26 @@ def chkfrench():
         varfrench.set("0")
 
 def chkfrench1():
-    if var13.get() == 1:
+    if var131.get() == 1:
         txtfrench1.configure(state=tkinter.NORMAL)
         varfrench1.set("")
-    elif var13.get() == 0:
+    elif var131.get() == 0:
         txtfrench1.configure(state=tkinter.DISABLED)
         varfrench1.set("0")
 
 def chkfrench2():
-    if var13.get() == 1:
+    if var132.get() == 1:
         txtfrench2.configure(state=tkinter.NORMAL)
         varfrench2.set("")
-    elif var13.get() == 0:
+    elif var132.get() == 0:
         txtfrench2.configure(state=tkinter.DISABLED)
         varfrench2.set("0")
 
 def chkfrench3():
-    if var13.get() == 1:
+    if var133.get() == 1:
         txtfrench3.configure(state=tkinter.NORMAL)
         varfrench3.set("")
-    elif var13.get() == 0:
+    elif var133.get() == 0:
         txtfrench3.configure(state=tkinter.DISABLED)
         varfrench3.set("0")
 
@@ -309,7 +298,7 @@ def costofmeal():
     m9 = float(varcreamy.get())
     m10 = float(vardeath.get())
     m11 = float(varferrero.get())
-    m12 = float(varfrench.get() + varfrench1.get() + varfrench2.get() + varfrench3.get())
+    m12 = float(varfrench.get())
     m13 = float(varfruit.get())
     m14 = float(varhot.get())
     m15 = float(varlitchee.get())
@@ -319,11 +308,14 @@ def costofmeal():
     m19 = float(varoreo.get())
     m20 = float(varredvelvet.get())
     m21 = float(varstrawberry.get())
+    m22 = float(varfrench1.get())
+    m23 = float(varfrench2.get())
+    m24 = float(varfrench3.get())
 
-    t1 = (m1*139)+(m2*79)+(m3*550)+(m4*75)+(m5*119)+(m6*199)+(m7*70)+(m8*70)+(m9*179)+(m10*175)+(m21*179)
-    t2 = (m11*799)+(m12*60)+(m13*179)+(m14*150)+(m15*139)+(m16*199)+(m17*199)+(m18*699)+(m19*550)+(m20*650)
+    t1 = (m1*1.39)+(m2*0.79)+(m3*5.50)+(m4*0.75)+(m5*1.19)+(m6*1.99)+(m7*0.70)+(m8*0.70)+(m9*1.79)+(m10*1.75)+(m21*1.79)
+    t2 = (m11*7.99)+(m12*0.60)+(m13*1.79)+(m14*1.50)+(m15*1.39)+(m16*1.99)+(m17*1.99)+(m18*6.99)+(m19*5.50)+(m20*6.50)+(m22*0.60)+(m23*0.60)+(m24*0.60)
 
-    cost = (t1 + t2)
+    cost = (t1 + t2)/100
     tax = (cost * 18)/100
     vartotal.set(cost + tax)
     vartax.set(tax)
@@ -332,27 +324,27 @@ def costofmeal():
         change = float(txtpayment.get())
         cost = (t1 + t2)
         tax = (cost * 3.4) / 100
-        tax2 = "Rs", str('%.2f'%(tax))
+        tax2 = "$", str('%.2f'%(tax))
         vartax.set(tax2)
 
-        cost2 = "Rs", str('%.2f'%(cost))
+        cost2 = "$", str('%.2f'%(cost))
         varsubtotal.set(cost2)
-        total2 = "Rs", str('%.2f'%(cost + tax))
+        total2 = "$", str('%.2f'%(cost + tax))
         vartotal.set(total2)
         change2 = (change - (cost + tax))
-        change3 = "Rs", str('%.2f'%(change2))
+        change3 = "$", str('%.2f'%(change2))
         varchange.set(change3)
 
     elif(txtpayment.get() == "MasterCard" or "DebitCard" or "VisaCard"):
         varpayment.set(" ")
         cost = (t1 + t2)
         tax = (cost * 3.4) / 100
-        tax2 = "Rs", str('%.2f' % (tax))
+        tax2 = "$", str('%.2f' % (tax))
         vartax.set(tax2)
 
-        cost2 = "Rs", str('%.2f' % (cost))
+        cost2 = "$", str('%.2f' % (cost))
         varsubtotal.set(cost2)
-        total2 = "Rs", str('%.1f' % (cost + tax))
+        total2 = "$", str('%.1f' % (cost + tax))
         vartotal.set(total2)
         varchange.set(" ")
 
@@ -410,18 +402,18 @@ french = tkinter.Checkbutton(f2top, text="Sprinkles\t\t\t60", variable=var13, on
 txtfrench = tkinter.Entry(f2top, font=('arial', 12), textvariable=varfrench, width=6, justify='left', state=tkinter.DISABLED)
 txtfrench.grid(row=5, column=1)
 
-french1 = tkinter.Checkbutton(f2top, text="Sugar cookies\t\t\t60", variable=var13, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkfrench).grid(row=6, column=0)
+french1 = tkinter.Checkbutton(f2top, text="Sugar cookies\t\t\t60", variable=var131, onvalue=1, offvalue=0,
+                            font=('Microsoft New Tai Lue', 12), command=chkfrench1).grid(row=6, column=0)
 txtfrench1 = tkinter.Entry(f2top, font=('arial', 12), textvariable=varfrench1, width=6, justify='left', state=tkinter.DISABLED)
 txtfrench1.grid(row=6, column=1)
 
-french2 = tkinter.Checkbutton(f2top, text="Bananas\t\t\t60", variable=var13, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkfrench).grid(row=7, column=0)
+french2 = tkinter.Checkbutton(f2top, text="Bananas\t\t\t60", variable=var132, onvalue=1, offvalue=0,
+                            font=('Microsoft New Tai Lue', 12), command=chkfrench2).grid(row=7, column=0)
 txtfrench2 = tkinter.Entry(f2top, font=('arial', 12), textvariable=varfrench2, width=6, justify='left', state=tkinter.DISABLED)
 txtfrench2.grid(row=7, column=1)
 
-french3 = tkinter.Checkbutton(f2top, text="A cherry\t\t\t60", variable=var13, onvalue=1, offvalue=0,
-                            font=('Microsoft New Tai Lue', 12), command=chkfrench).grid(row=8, column=0)
+french3 = tkinter.Checkbutton(f2top, text="A cherry\t\t\t60", variable=var133, onvalue=1, offvalue=0,
+                            font=('Microsoft New Tai Lue', 12), command=chkfrench3).grid(row=8, column=0)
 txtfrench3 = tkinter.Entry(f2top, font=('arial', 12), textvariable=varfrench3, width=6, justify='left', state=tkinter.DISABLED)
 txtfrench3.grid(row=8, column=1)
 #################################################3    Frame 2 bottom  ###########################################################################
@@ -462,7 +454,7 @@ txttotal.grid(row=3, column=2)
 
 ########################################################   Frame 3     ##########################################################################
 
-lblIcecake = tkinter.Label(f3, font=('comic sans MS', 18, 'bold'), text="Soops")
+lblIcecake = tkinter.Label(f3, font=('comic sans MS', 18, 'bold'), text="Scoops")
 lblIcecake.grid(row=0, column=0)
 
 btnonescoop = tkinter.Button(f3,padx=16,pady=1,bd=4,fg='black',font=('arial',16,'bold'),width=5,text='1 scoop').grid(row=1,column=0)
